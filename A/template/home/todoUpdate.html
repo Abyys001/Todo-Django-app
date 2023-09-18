@@ -1,0 +1,18 @@
+{% extends "../base/base.html" %}
+
+
+{% block content %}
+<div class="form-group">
+    <br>
+    <h1>
+        Update Todo
+        <hr>
+    </h1>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <br>
+        <input type="submit" value="Update">
+    </form>
+</div>
+{% endblock content %}

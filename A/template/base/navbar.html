@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'home' %}">Vaporware-road</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mynavbar">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Todo-page' %}">Todo Page</a>
+          </li>
+        </ul>
+        
+        {% if request.user.is_authenticated %}      
+        <a href="{% url 'user-logout' %}">
+          <button class="btn btn-danger">
+              Log Out
+          </button>
+        </a>
+        {% else %}
+        <form class="d-flex">
+          <div class="btn-group btn-group">
+            <a href="{% url 'user-login' %}">
+              <button type="button" class="btn btn-primary">
+                  Log In
+              </button>
+            </a>
+            <a href="{% url 'user-register' %}">
+              <button type="button" class="btn btn-info">
+                Sign Up
+              </button>
+            </a>
+          </div> 
+        </form>
+        {% endif %}
+    
+      </div>
+    </div>
+  </nav>

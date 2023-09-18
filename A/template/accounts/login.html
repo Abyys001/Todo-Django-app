@@ -1,0 +1,21 @@
+{% extends "../base/base.html" %}
+
+
+{% block content %}
+        
+<div class="form-group">
+    
+        <h1>
+            Login Page
+        </h1> <hr>
+    <form action="" method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <br>
+    <input type="submit" value="Login">
+    </form>
+</div>
+
+{% endblock content %}

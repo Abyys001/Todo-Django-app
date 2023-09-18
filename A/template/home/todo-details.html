@@ -1,0 +1,64 @@
+{% extends '../base/base.html' %}
+
+
+
+{% block content %}
+
+    <h1> 
+        {{ todo.title }}
+    </h1> <hr>
+
+    <span>
+        
+        {% if todo.updated_time != todo.created_time %}
+        
+        <b>Created Time</b> {{ todo.created_time }}
+        <br>
+
+        <b>Updated Time:</b> {{ todo.updated_time }}
+        {% else %}
+
+        <b>Created Time</b> {{ todo.created_time }}
+        {% endif %}
+        
+    </span>
+    <br> <br>
+    <h5> 
+        {{ todo.description }}
+    </h5>
+    <br>
+    
+    {% if todo.is_done %}
+    <button class="btn btn-primary" type="button" disabled>
+        <span role="status">This Todo is Done!!</span>
+        <span class="spinner-grow spinner-grow-sm" aria-hidden="true"></span>
+    </button>
+    {% else %}
+    <button class="btn btn-primary" type="button" disabled>
+        <span role="status">In Progress...</span>
+        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+    </button>
+    {% endif %}
+
+    <br> <hr>   
+    <div class="btn-group">
+        <a href="{% url 'Todo-page'%}">
+            <button type="button" class="btn btn-primary ">Back</button>
+        </a>
+
+        <a href="{% url 'done-todo' todo.id %}">
+            <button type="button" class="btn btn-success">Done</button>
+        </a>
+
+        <a href="{% url 'update' todo.id %}">
+            <button type="button" class="btn btn-info">Update</button>
+        </a>
+
+        
+        <a href="{% url 'delete-todo' todo.id %}">
+            <button type="button" class="btn btn-danger">Delete</button>
+        </a>
+    </div>
+    
+
+{% endblock content %}

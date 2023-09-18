@@ -1,0 +1,51 @@
+{% extends '../base/base.html' %}
+
+{% block content %}
+            <h1 class="display-3">My Todo list</h1>
+            <a name="" id="" class="btn btn-primary" href="create" role="button">Create Todo</a>
+            <hr>
+    <div class="table-responsive">
+        
+            <table class="table table-striped">    
+
+                <tr>
+                    <td>
+                        <b>Title</b>
+                    </td>
+                    <td>
+                        <b>Status</b>
+                    </td>
+                    <td>
+                        <b>Details</b>
+                    </td>
+                </tr>
+
+                {% for todo in todos %}
+            <ol>
+                
+                <tr>  
+                    <td> <h4> <li> {{ todo.title }} </li> </h4> </td>
+
+                    
+                <td>
+                    
+                    {% if todo.is_done %}
+                    <button type="button" class="btn btn-success">Done!</button>
+                    {% else %}
+                    <button type="button" class="btn btn-warning">Undone!</button>
+                    {% endif %}
+                 
+                </td>
+                    <td>
+                        <a href="{% url 'Todo-detail' todo.id %}">
+                            <span class="input-group-btn">
+                                    <button class="btn btn-secondary" type="button" >View Detail</button>
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </ol>
+            </table>
+    </div>  
+{% endblock content %}
